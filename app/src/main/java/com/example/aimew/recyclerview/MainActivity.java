@@ -1,10 +1,13 @@
 package com.example.aimew.recyclerview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.example.aimew.recyclerview.models.Libro;
 
@@ -24,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //referenciacion
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
         listaLibros = new ArrayList<Libro>();
         listaLibros.add(new Libro("Juego de tronos", "Jose Manuel", R.drawable.libro_multiverso));
         listaLibros.add(new Libro("Juego de tronos", "Jose Manuel", R.drawable.libro_multiverso));
@@ -38,6 +38,26 @@ public class MainActivity extends AppCompatActivity {
         listaLibros.add(new Libro("Juego de tronos", "Jose Manuel", R.drawable.libro_multiverso));
         listaLibros.add(new Libro("Juego de tronos", "Jose Manuel", R.drawable.libro_multiverso));
         listaLibros.add(new Libro("Juego de tronos", "Jose Manuel", R.drawable.libro_multiverso));
+
+
+        //referenciacion
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        //hacer clickable la recyclerView
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        //obtener los datos del libro de la posicion que se seleccionó de la recyclerView
+                        String nombreLibro = listaLibros.get(position).getNombre();
+                        String autorLibro = listaLibros.get(position).getAutor();
+
+                        //mandar los datos obtenidos a la siguiente Activity
+                        Intent intent = new Intent(MainActivity.this, LibroDetalleActivity.class);
+                        intent.putExtra("nombre", nombreLibro);
+                        intent.putExtra("autor", autorLibro);
+                        startActivity(intent);
+                    }
+                })
+        );
 
         //LinearLayoutManager
         llmVertical = new LinearLayoutManager(this);
