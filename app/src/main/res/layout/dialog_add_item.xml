@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/edit_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titulo"/>
+
+    <EditText
+        android:id="@+id/edit_dialog_autor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_dialog_title"
+        android:hint="Autor"/>
+
+    <ImageView
+        android:id="@+id/image_dialog_book"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/edit_dialog_autor"
+        android:src="@android:drawable/ic_menu_camera"
+        android:background="@android:color/holo_blue_dark"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecciona una imagen"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/edit_dialog_autor"
+        android:layout_toRightOf="@+id/image_dialog_book"
+        android:layout_toEndOf="@+id/image_dialog_book"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp" />
+
+    <TextView
+        android:id="@+id/text_dialog_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/image_dialog_book"
+        android:layout_marginTop="50dp"
+        android:fontFamily="bold"
+        android:text="AGREGAR"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_dialog_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="bold"
+        android:text="CANCELAR"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="16sp"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp"
+        android:layout_alignBaseline="@+id/text_dialog_add"
+        android:layout_alignBottom="@+id/text_dialog_add"
+        android:layout_toLeftOf="@+id/text_dialog_add"
+        android:layout_toStartOf="@+id/text_dialog_add" />
+</RelativeLayout>
